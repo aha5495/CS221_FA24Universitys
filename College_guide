@@ -81,7 +81,7 @@ public class College_guide { //Tester for the University App;
             System.out.println("9.Edit the Undergraduate's information");
             System.out.println("10.Exit the app;");
             int op=scan.nextInt();
-            if(op==1){
+            if(op==1){ //User wants to add a college to the system;
                 add_College=1;
                 System.out.println("Time to add in a college!Hooray!");
                 while(add_College==1){ //Loop
@@ -128,10 +128,7 @@ public class College_guide { //Tester for the University App;
                 }
             }
             else if(op==2){
-                take_underGrad=1;
-                while(take_underGrad==1){
 
-                }
             }
             else if(op==3){
                 take_Grad=1;
@@ -168,5 +165,15 @@ public class College_guide { //Tester for the University App;
 }
 //supplementary functions for the Project;
 private static void searchColleges(Scanner scan,University[] availableCollege){
-
+    int univ_ID;
+    System.out.println("Enter in the college ID:");
+    univ_ID=scan.nextInt();
+    availableCollege i=null ;//We have not yet found the appropriate college;
+    //Searching for a college given their ID;
+    for(int n=0;n<=availableCollege.length;n++){ //loop around the Colleges in the ArrayList availableCollege;
+        if(availableCollege[n].get_ID.equals(univ_ID)){
+            i=availableCollege[n];
+        }
+    }
+    return i; //Confirming that the college exists;
 }
