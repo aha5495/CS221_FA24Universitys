@@ -1,0 +1,46 @@
+public class Address {
+    //Variables for the address class;Used in the University class
+    private String College_streetName;
+    private String College_city;
+    private String College_state;
+    private int College_zipCode;
+    public Address(String College_city,String College_state,int College_zipCode){ //Search only by City,State,Zipcode;
+        this.College_city=College_city;
+        this.College_state=College_state;
+        this.College_zipCode=College_zipCode;
+    }
+    public Address(String College_streetName,String College_city,String College_state,int College_zipCode) { //Search with all variables to determine the exact college;
+        this.College_streetName=College_streetName;
+        this.College_city=College_city;
+        this.College_state=College_state;
+        this.College_zipCode=College_zipCode;
+    }
+    public void setCollege_streetName(String College_streetName) {
+        this.College_streetName=College_streetName;
+    }
+    public void setCollege_city(String College_city) {
+        this.College_city=College_city;
+    }
+    public void setCollege_state(String College_state) {
+        this.College_state=College_state;
+    }
+    public void setCollege_zipCode(int College_zipCode) {
+        this.College_zipCode=College_zipCode;
+    }
+    public String getCollege_streetName() {
+        return this.College_streetName;
+    }
+    public String getCollege_city() {
+        return this.College_city;
+    }
+    public String getCollege_state() {
+        return this.College_state;
+    }
+    public int getCollege_zipCode() {
+        return this.College_zipCode;
+    }
+    //Printing out the address information;
+    public String description(){
+        return this.College_streetName+","+this.College_city+","+this.College_state+","+this.College_zipCode;
+    }
+}
