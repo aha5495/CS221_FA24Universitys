@@ -1,0 +1,57 @@
+//Programmer:Aravind Alwar
+//Class:CMPSC 221;
+//File:Student.java
+//Date started:October 21,2024;
+//Latest Revision:October 21,2024;
+
+import java.util.ArrayList;
+
+public class Undergraduate extends Student{
+    //Undergraduate Student Attributes
+    private ArrayList<Course> underGrad_classes; //Our ArrayList class for the Student to add/select;
+    private float SAT_rank; //SAT score required for Undergraduate;
+    private float undergrad_pay;
+    public Undergraduate(String firstName,String middleName,String lastName,String student,Date dateOfBirth,Address scl_Address,float cum_GPA,ArrayList<University> universities,ArrayList<Course> underGrad_classes, float SAT_rank,float undergrad_pay) {
+        super(firstName,middleName,lastName,student,dateOfBirth,scl_Address,cum_GPA,universities);
+        this.underGrad_classes=new ArrayList<>();
+        this.SAT_rank=SAT_rank;
+        this.undergrad_pay=undergrad_pay;
+    }
+    //Setters and getters;
+    public void setClasses(ArrayList<Course> underGrad_classes){
+        this.underGrad_classes=underGrad_classes;
+    }
+    public void set_SAT(float SAT_rank){
+        this.SAT_rank=SAT_rank;
+    }
+    public void setPay(float undergrad_pay){
+        this.undergrad_pay=undergrad_pay;
+    }
+    public ArrayList<Course> getUnderGrad_classes(){
+        return this.underGrad_classes;
+    }
+    public float getSAT_rank(){
+        return this.SAT_rank;
+    }
+    public float getUndergrad_pay(){
+        return this.undergrad_pay;
+    }
+    //We're going to implement a method to calculate the Undergrad's total fees;
+    public void calc_Fees(){
+        undergrad_pay=0.0f;
+        for(Course c:this.underGrad_classes){
+            undergrad_pay+=c.getClassFee(); //Add each course's individual fee up to the total;
+        }
+    }
+    //Display the Undergraduate's information;
+    public void profile(){
+        System.out.println("Undergraduate:");
+        super.show();
+        System.out.println("Classes:");
+        for(Course c:this.underGrad_classes){
+            c.description();
+        }
+        System.out.println("SAT:"+this.SAT_rank);
+        System.out.println("Pay:"+this.undergrad_pay);
+    }
+}
