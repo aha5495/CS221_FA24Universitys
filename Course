@@ -1,0 +1,76 @@
+//Programmer:Aravind Alwar
+//Class:CMPSC 221;
+//File:Course.java
+//Date started:October 21,2024;
+//Latest Revision:October 21,2024;
+
+public class Course { //This will be our course Class,applied for both Graduate/Undergraduate;
+    //Variables-attributes for the course Class;
+    private String courseName; //eg.Math 140 Honors;
+    private float course_Credits;
+    private float course_Fee;
+    private int class_Section;
+    private String mode;
+    //Constructors for the course class;
+    public Course(){
+        courseName = "";
+        course_Credits = 0.0f;
+        course_Fee = 0.0f;
+        class_Section = 000;
+        mode = "";
+    }
+    //Omitting the course Subjectt variable;
+    public Course(String courseName, float course_Credits, float course_Fee,int class_Section, String mode){
+        this.courseName = courseName;
+        this.course_Credits = course_Credits;
+        this.course_Fee=course_Fee;
+        this.class_Section = class_Section;
+        this.mode = mode;
+        //Error Checking for the students
+        if(this.course_Credits<0.0f){
+            throw new IllegalArgumentException("The number of credits is invalid.");
+        }
+        if(this.class_Section<=0){
+            throw new IllegalArgumentException("Class Section number cannot be less than/equal to 0.");
+        }
+        if(!this.mode.equalsIgnoreCase("In-Person")||!this.mode.equalsIgnoreCase("Virtual")){
+            throw new IllegalArgumentException("Your mode can either be in-Person or Online(Virtual) mode.");
+        }
+    }
+    //Setters and Getters of the Course class;
+    public void set_Course(String courseName){
+        this.courseName=courseName;
+    }
+    public void setCredits(float course_Credits){
+        this.course_Credits=course_Credits;
+    }
+    public void setclass_Fee(float course_Fee){
+        course_Fee=100f*course_Credits;
+        this.course_Fee=course_Fee;
+    }
+    public void setClass_Section(int class_Section){
+        this.class_Section=class_Section;
+    }
+    public void setMode(String mode){
+        this.mode=mode;
+    }
+    public String get_Course(){
+        return this.courseName;
+    }
+    public float getCredits(){
+        return this.course_Credits;
+    }
+    public float getClassFee(){
+        return this.course_Fee;
+    }
+    public int getClass_Section(){
+       return this.class_Section;
+    }
+    public String getMode(){
+        return this.mode;
+    }
+    //String method to send out the information;
+    public void description(){ //Full course description(Excluding course area);
+        System.out.printf("%s %.01f Credits\nSection %d,%s\nCost:%.2f\n",this.courseName,this.course_Credits,this.class_Section,this.mode,this.getClassFee());
+    }
+}
