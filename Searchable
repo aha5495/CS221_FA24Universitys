@@ -1,0 +1,9 @@
+//Programmer:Aravind Alwar
+//Class:CMPSC 221;
+//File:Searchable.java
+//Date started:October 25,2024;
+//Latest Revision:October 25,2024;
+
+public interface Searchable {
+    abstract void search();
+}
