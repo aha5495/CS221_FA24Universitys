@@ -1,0 +1,172 @@
+//Programmer:Aravind Alwar
+//Class:CMPSC 221;
+//File:Main.java
+//Date started:October 21,2024;
+//Latest Revision:October 21,2024;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class College_guide { //Tester for the University App;
+    public static void main(String[] args) {
+        //Boolean operations to start the process,switch to another prompt,exit,etc;
+        boolean program=true;
+        int take_Student=0;
+        boolean modify_Student=false;
+        int take_underGrad=0;
+        int take_Grad=0;
+        boolean modify_College=false;
+        int add_College=0;
+        ArrayList<University> availableCollege=new ArrayList<>();
+
+        //Setting up our University class variables;
+        Scanner scan=new Scanner(System.in);
+        ArrayList<Student> Top_tiers=new ArrayList<>(0); //Creating an array list of students to be added to the college'
+        int curr_Cap=0; //the capacity of the college applicants at the current point.
+        String coll_Major=" ";
+        String College_title;
+        Address college;
+        String college_Street=" ";
+        String college_City=" ";
+        String college_State=" ";
+        int college_Zip=0;
+        int univ_ID=0;
+        int current_applicants=0;
+
+        //Our Student and Subclasses variables
+        String student_First=" ";
+        String student_middle=" ";
+        String student_Last=" ";
+        String name; //The student's full name,will be calculated later;
+        int m;
+        int d;
+        int yr;
+        Date birth_Day;
+        String hs_Street=" ";
+        String hs_City=" ";
+        String hs_State=" ";
+        int hs_Zip=0;
+        String hs_Name=" ";
+        Address hs; //High School address object;
+        ArrayList<University> topList=new ArrayList<>();
+
+        //Specific student type variables(Graduate vs Undergraduate);
+        float undergrad_SAT=0.0f;
+        float undergrad_cost;
+        ArrayList<Course> undergrad_projectedClasses=new ArrayList<>();
+        ArrayList<Undergraduate> undergraduates=new ArrayList<>(); //Group of Undergrads;
+        ArrayList<Course> grad_ProjectedClasses=new ArrayList<>();
+        ArrayList<Undergraduate> graduates=new ArrayList<>(); //Group Graduates;
+        float grad_cost;
+        ArrayList<Student> users=new ArrayList<>(); //All users in the whole system;
+
+        //Course attributes;
+        String classN=" ";
+        float class_Credits=0.0f;
+        float class_Fee;
+        int class_Section=000;
+        String class_mode=" ";
+
+        while(program){ //Start of the program,foundation for all the subfunctions;
+            System.out.println("Welcome to the University finder Program,the perfect app for the student to find their top Colleges!");
+            //We are giving the user flexibility to enter in their choice of what to add first;
+            System.out.println("1.Enter in an University");
+            System.out.println("2.Add an UNDERGRADUATE to a college");
+            System.out.println("3.Add a GRADUATE to a college");
+            System.out.println("4.Add in ONLY Undergraduate Classes");
+            System.out.println("5.Add in ONLY Graduate Classes");
+            System.out.println("6.Edit a College's Information");
+            System.out.println("7.Change course information(both types)");
+            System.out.println("8.Edit the Graduate's information");
+            System.out.println("9.Edit the Undergraduate's information");
+            System.out.println("10.Exit the app;");
+            int op=scan.nextInt();
+            if(op==1){
+                add_College=1;
+                System.out.println("Time to add in a college!Hooray!");
+                while(add_College==1){ //Loop
+                    System.out.println("University ID:");
+                    univ_ID=scan.nextInt();
+                    if(univ_ID<0){ //Error checking
+                        while(univ_ID<0){
+                            System.out.println("Please enter a valid University ID.");
+                            univ_ID=scan.nextInt();
+                        }
+                    }
+                    System.out.println("University Name:");
+                    College_title=scan.next();
+                    System.out.println("University Address:");
+                    college_Street=scan.next();
+                    System.out.println("University City:");
+                    college_City=scan.next();
+                    System.out.println("University State:");
+                    college_State=scan.next();
+                    System.out.println("University Zip:");
+                    college_Zip=scan.nextInt();
+                    college=new Address(college_Street,college_City,college_State,college_Zip); //Created the address of the University;
+                    System.out.println("Applicants:");
+                    if(Top_tiers.isEmpty()){
+                        System.out.println("There are no Applicants at this college :(.");
+                    }
+                    else{
+                        for(int a=0;a<Top_tiers.size();a++){
+                            Top_tiers.get(a).getStudent();
+                        }
+                    }
+                    System.out.println("Major:");
+                    coll_Major=scan.next();
+                    System.out.println(current_applicants+" Applicants\n");
+                    University institute_A=new University(univ_ID,College_title,college,Top_tiers,coll_Major,current_applicants);
+                    institute_A.set_Applicants(Top_tiers); //Setting the top
+                    availableCollege.add(institute_A);
+                    System.out.println("Add another College:");
+                    op=scan.nextInt();
+                    if(op==0){ //Exiting the subprogram;
+                        System.out.println("Exiting this area");
+                        add_College=0;
+                    }
+                }
+            }
+            else if(op==2){
+                take_underGrad=1;
+                while(take_underGrad==1){
+
+                }
+            }
+            else if(op==3){
+                take_Grad=1;
+            }
+            else if(op==4){
+
+            }
+            else if(op==5){
+
+            }
+            else if(op==6){
+
+            }
+            else if(op==7){
+
+            }
+            else if(op==8){
+
+            }
+            else if(op==9){
+
+            }
+            else if(op==10){
+                program=false;
+            }
+            else{
+                while(op>5||op<1){
+                    System.out.println("Invalid option.Please enter a valid option to proceed fwd.");
+                    op=scan.nextInt();
+                }
+            }
+        }
+    }
+}
+//supplementary functions for the Project;
+private static void searchColleges(Scanner scan,University[] availableCollege){
+
+}
