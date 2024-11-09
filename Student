@@ -1,0 +1,96 @@
+//Programmer:Aravind Alwar
+//Class:CMPSC 221;
+//File:Student.java
+//Date started:October 21,2024;
+//Latest Revision:October 21,2024;
+
+import java.util.ArrayList;
+
+public abstract class Student implements Searchable{ //The student class,responsible for personal info and being registered to universities.
+    private String firstName=" ";
+    private String middleName=" ";
+    private String lastName=" ";
+    private String student; //Full name of student
+    private Date dateOfBirth;
+    private Address scl_Address;
+    private ArrayList<University> universities; //Adding an arrayList of the universities student is interested;
+    private float cum_GPA;
+    //Constructors for Student class;
+    public Student(){
+        firstName = "";
+        middleName = "";
+        lastName = "";
+        dateOfBirth = null;
+        scl_Address = null;
+        cum_GPA=0f;
+    }
+    public Student(String firstName,String middleName,String lastName,String student,Date dateOfBirth,Address scl_Address,float cum_GPA,ArrayList<University> universities){
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        student=this.firstName+" "+this.middleName+" "+this.lastName;
+        this.student=student;
+        this.dateOfBirth = dateOfBirth;
+        this.scl_Address = scl_Address;
+        this.cum_GPA=cum_GPA;
+        this.universities=new ArrayList<>();
+        //Error Checking;
+
+    }
+    //Setters and Getters;
+    public void setName(String firstName,String middleName,String lastName,String student){
+        //We need to account for the case in which a student does not enter their middle name;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        if(middleName.isEmpty()){
+            student=firstName+" "+lastName;
+        }
+        else{
+            student=firstName+" "+middleName+" "+lastName;
+        }
+        this.student=student;
+    }
+    public void setDateOfBirth(Date dateOfBirth){
+        this.dateOfBirth = dateOfBirth;
+    }
+    public void setAddress(Address scl_Address){
+        this.scl_Address = scl_Address;
+    }
+    public void student_CumGPA(float cum_GPA){
+        this.cum_GPA=cum_GPA;
+    }
+    public void Selected_Universities(ArrayList<University> universities) {
+        this.universities = universities;
+    }
+
+    public String getStudent(){
+        return this.student;
+    }
+    public Date getDateOfBirth(){
+        return this.dateOfBirth;
+    }
+    public Address getAddress(){
+        return this.scl_Address;
+    }
+    public float getCum_GPA() {
+        return this.cum_GPA;
+    }
+    public ArrayList<University> get_TopUniversities(){
+        return this.universities;
+    }
+    //We need to have the student Search for colleges using the interface; Implementation will be different for each class;
+    @Override
+    public void search() {
+        for(University college:universities){
+            college.Display(); //Send out the college's information
+        }
+    }
+    //method to show the student's information
+    public void show(){
+        System.out.println(this.student+"\n"+"Born:"+this.dateOfBirth+"\nHigh School:"+this.getAddress()+"\nAccepted Universities:");
+        for(University university:universities){
+            university.Display();
+        }
+    }
+}
