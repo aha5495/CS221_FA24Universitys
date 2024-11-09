@@ -1,0 +1,41 @@
+//Programmer:Aravind Alwar
+//Class:CMPSC 221;
+//File:Student.java
+//Date started:October 21,2024;
+//Latest Revision:October 21,2024;
+
+import java.util.ArrayList;
+
+public class Graduate extends Student{
+    //Variables for Graduate class;
+    private ArrayList<Course> Graduate_classes;
+    private float total_Cost;
+    public Graduate(String firstName,String middleName,String lastName,String student,Date dateOfBirth,Address scl_Address,float cum_GPA,ArrayList<University> universities,ArrayList<Course> Graduate_classes,float total_Cost){
+        super(firstName,middleName,lastName,student,dateOfBirth,scl_Address,cum_GPA,universities);
+        this.Graduate_classes = new ArrayList<>();
+        //We want to calculate the total cost GIVEN the fee and another variable;
+        for(Course c:Graduate_classes){
+            total_Cost+=c.getClassFee();
+            total_Cost*=10; //Given that Graduate students are in a higher rank,it costs more;
+        }
+    }
+    //Setters and Getters for the total cost
+    public void setGrad_classes(ArrayList<Course> Graduate_classes){
+        this.Graduate_classes = Graduate_classes;
+    }
+    public ArrayList<Course> getGraduate_classes(){
+        return this.Graduate_classes;
+    }
+    public float getTotal_Cost(){
+        return this.total_Cost;
+    }
+    public void profile(){
+        System.out.println("Graduate:");
+        super.show();
+        System.out.println("Classes:");
+        for(Course c:this.Graduate_classes){
+            c.description();
+        }
+        System.out.println("Pay:"+this.total_Cost);
+    }
+}
