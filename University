@@ -22,7 +22,7 @@ public class University implements Searchable {
         this.Univ_IDENTIFICATION = Univ_IDENTIFICATION;
         this.Name_of_University = Name_of_University;
         this.Address_of_University = Address_of_University;
-        this.Applicants = Applicants;
+        this.Applicants = new ArrayList<>();
         this.Introduction = Introduction;
         this.applicantCount = applicantCount;
     }
@@ -50,25 +50,9 @@ public class University implements Searchable {
     public void set_Applicants(ArrayList<Student> Applicants) {
         this.Applicants = Applicants;
     }
-    public void add_Applicant(Student applicant) {
-        if(applicant.getCum_GPA()>3.0f){ //Success,the student gets accepted into the College;
-            Applicants.add(applicant);
-            this.applicantCount++;
-            System.out.println("Success!Based on your GPA,you are a suitable candidate for the college.");
-        }
-        else if(applicant.getCum_GPA()==3.0f){ //No guarantee of being admitted;
-            System.out.println("You might not be unsuitable for the college,but we need you to explain the GPA a bit more.");
-        }
-        else{ //REJECT.
-            this.applicantCount+=0;
-            System.out.println("We regret to say it,but you are nto a suitable candidate for this college.");
-        }
-    }
-
     public ArrayList<Student> get_Applicants() {
         return this.Applicants;
     }
-
     public void set_Introduction(String Major) {
         this.Introduction = Major;
     }
@@ -81,16 +65,22 @@ public class University implements Searchable {
     public void search() {
         // search method implemented,searching the most qualified applicants in the system;
         for(applicantCount=0;applicantCount<=Applicants.size();applicantCount++) {
-            Applicants.get(applicantCount).show();
+            Applicants.get(applicantCount).Display();
         }
     }
 
     public void Display() {
         // display method implemented
         System.out.println("University ID:" + this.Univ_IDENTIFICATION + ", Name: " + this.Name_of_University+"\nLocation:"+this.get_CollegeAddress().description()+"\nApplicants:");
-        for(Student a: Applicants){
-            System.out.println(a.getStudent()); //Shows only the student's name;
+        if(Applicants.isEmpty()){
+            System.out.println("none");
+        }
+        else{
+            for(Student a: Applicants){
+                System.out.println(a.getStudent()); //Shows only the student's name;
+            }
         }
         System.out.println("Major:"+this.get_Introduction());
     }
+}
 }
