@@ -31,11 +31,18 @@ public class Graduate extends Student{
     }
     public void profile(){
         System.out.println("Graduate:");
-        super.show();
+        super.Display();
         System.out.println("Classes:");
         for(Course c:this.Graduate_classes){
             c.description();
         }
         System.out.println("Pay:"+this.total_Cost);
+    }
+    //Edit(11/15/2024):We need to make the Graduate added to only the colleges intended;
+    public boolean Grad_appliedHere(University college){ //Checking if the undergrad already applied to the college;
+        return this.get_TopUniversities().contains(college);
+    }
+    public void addCollege(University college){ //Add the graduate to the college intended
+        this.get_TopUniversities().add(college);
     }
 }
