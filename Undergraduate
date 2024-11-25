@@ -46,12 +46,19 @@ public class Undergraduate extends Student{
     //Display the Undergraduate's information;
     public void profile(){
         System.out.println("Undergraduate:");
-        super.show();
+        super.Display();
         System.out.println("Classes:");
         for(Course c:this.underGrad_classes){
             c.description();
         }
         System.out.println("SAT:"+this.SAT_rank);
         System.out.println("Pay:"+this.undergrad_pay);
+    }
+    //Modifications used
+    public boolean hasAppliedTo(University college) {
+        return this.get_TopUniversities().contains(college);
+    }
+    public void addAppliedCollege(University college) {
+        this.get_TopUniversities().add(college);
     }
 }
