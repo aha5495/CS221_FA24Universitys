@@ -3,10 +3,10 @@
 //File:Student.java
 //Date started:October 21,2024;
 //Latest Revision:October 21,2024;
-
+import java.util.Scanner;
 import java.util.ArrayList;
 
-public abstract class Student implements Searchable{ //The student class,responsible for personal info and being registered to universities.
+public class Student implements Searchable{ //The student class,responsible for personal info and being registered to universities.
     private String firstName=" ";
     private String middleName=" ";
     private String lastName=" ";
@@ -43,8 +43,8 @@ public abstract class Student implements Searchable{ //The student class,respons
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
-        if(middleName.isEmpty()){
-            student=firstName+" "+lastName;
+        if(middleName.equalsIgnoreCase("None")){
+            student=firstName+lastName;
         }
         else{
             student=firstName+" "+middleName+" "+lastName;
@@ -60,9 +60,6 @@ public abstract class Student implements Searchable{ //The student class,respons
     public void student_CumGPA(float cum_GPA){
         this.cum_GPA=cum_GPA;
     }
-    public void Selected_Universities(ArrayList<University> universities) {
-        this.universities = universities;
-    }
 
     public String getStudent(){
         return this.student;
@@ -76,6 +73,9 @@ public abstract class Student implements Searchable{ //The student class,respons
     public float getCum_GPA() {
         return this.cum_GPA;
     }
+    public void set_selectedUniversities(ArrayList<University> universities){
+        this.universities=universities;
+    }
     public ArrayList<University> get_TopUniversities(){
         return this.universities;
     }
@@ -87,7 +87,7 @@ public abstract class Student implements Searchable{ //The student class,respons
         }
     }
     //method to show the student's information
-    public void show(){
+    public void Display(){
         System.out.println(this.student+"\n"+"Born:"+this.dateOfBirth+"\nHigh School:"+this.getAddress()+"\nAccepted Universities:");
         for(University university:universities){
             university.Display();
